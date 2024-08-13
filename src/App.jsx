@@ -78,8 +78,22 @@ const App = () => {
   ]);
 
   return (
-    <h1>Hello world!</h1>
+    <>
+      <h1>Zombie Fighters</h1>
+      <ul>
+        {zombieFighters.map((fighter, i) => (
+          <li>
+            <img key={i} src={fighter.img} />
+            <p>{fighter.name}</p>
+            <p>Price: {fighter.price}</p>
+            <p>Strength: {fighter.strength}</p>
+            <p>Agility: {fighter.agility}</p>
+            <button>Add</button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
-}
+};
 
 export default App
