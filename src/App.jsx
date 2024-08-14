@@ -4,6 +4,7 @@ import './App.css'
 const App = () => {
   const [team, setTeam] = useState([]);
   const [strength, setStrength] = useState(0);
+  const [agility, setAgility] = useState(0);
   const [money, setMoney] = useState(100);
   const [zombieFighters, setZombieFighters] = useState([
     {
@@ -79,6 +80,7 @@ const App = () => {
   ]);
 
   const addStrength = fighterStrength => setStrength(strength + fighterStrength);
+  const addAgility = fighterAgility => setAgility(agility + fighterAgility);
 
   const handleAddFighter = (fighterIdx) => {
     const newFighter = zombieFighters[fighterIdx];
@@ -87,6 +89,7 @@ const App = () => {
       setMoney(money - newFighter.price);
       setTeam(newTeamArr);
       addStrength(newFighter.strength);
+      addAgility(newFighter.agility);
     } else {
       console.log('Not enough money');
     };
@@ -97,6 +100,7 @@ const App = () => {
       <h1>Zombie Fighters</h1>
       <h2>Money: {money}</h2>
       <h2>Team Strength: {strength}</h2>
+      <h2>Team Agility: {agility}</h2>
       <h2>Team</h2>
       <ul>
         {team.length ?
