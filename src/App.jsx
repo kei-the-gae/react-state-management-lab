@@ -77,19 +77,30 @@ const App = () => {
     },
   ]);
 
+  const handleAddFighter = (fighterIdx) => {
+    const newFighter = zombieFighters[fighterIdx];
+    const newTeamArr = [...team, newFighter];
+    if (newFighter.price <= money) {
+      setMoney(money - newFighter.price)
+      setTeam(newTeamArr);
+    } else {
+      console.log('Not enough money');
+    };
+  };
+
   return (
     <>
       <h1>Zombie Fighters</h1>
       <h2>Money: {money}</h2>
       <ul>
         {zombieFighters.map((fighter, i) => (
-          <li>
-            <img key={i} src={fighter.img} />
+          <li key={i}>
+            <img src={fighter.img} />
             <p>{fighter.name}</p>
             <p>Price: {fighter.price}</p>
             <p>Strength: {fighter.strength}</p>
             <p>Agility: {fighter.agility}</p>
-            <button>Add</button>
+            <button onClick={() => handleAddFighter(i)}>Add</button>
           </li>
         ))}
       </ul>
