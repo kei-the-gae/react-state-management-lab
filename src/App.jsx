@@ -80,7 +80,6 @@ const App = () => {
   ]);
 
   const updateStats = (newTeamArr) => {
-    console.log(team);
     const updatedStrength = newTeamArr.reduce((acc, fighter) => acc + fighter.strength, 0);
     const updatedAgility = newTeamArr.reduce((acc, fighter) => acc + fighter.agility, 0);
     setStrength(updatedStrength);
