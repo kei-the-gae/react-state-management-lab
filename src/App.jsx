@@ -99,6 +99,15 @@ const App = () => {
     };
   };
 
+  const handleRemoveFighter = (fighterIdx) => {
+    const removedFighter = team[fighterIdx];
+    const newTeamArr = [...team];
+    newTeamArr.splice(fighterIdx, 1);
+    setMoney(money + removedFighter.price);
+    setTeam(newTeamArr);
+    updateStats(newTeamArr);
+  };
+
   return (
     <>
       <h1>Zombie Fighters</h1>
