@@ -79,8 +79,13 @@ const App = () => {
     },
   ]);
 
-  const addStrength = fighterStrength => setStrength(strength + fighterStrength);
-  const addAgility = fighterAgility => setAgility(agility + fighterAgility);
+  const updateStats = (newTeamArr) => {
+    console.log(team);
+    const updatedStrength = newTeamArr.reduce((acc, fighter) => acc + fighter.strength, 0);
+    const updatedAgility = newTeamArr.reduce((acc, fighter) => acc + fighter.agility, 0);
+    setStrength(updatedStrength);
+    setAgility(updatedAgility);
+  };
 
   const handleAddFighter = (fighterIdx) => {
     const newFighter = zombieFighters[fighterIdx];
@@ -88,8 +93,7 @@ const App = () => {
     if (newFighter.price <= money) {
       setMoney(money - newFighter.price);
       setTeam(newTeamArr);
-      addStrength(newFighter.strength);
-      addAgility(newFighter.agility);
+      updateStats(newTeamArr);
     } else {
       console.log('Not enough money');
     };
